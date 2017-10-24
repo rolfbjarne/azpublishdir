@@ -24,7 +24,7 @@ namespace azpublishdir
 
 			UploadDirectoryOptions options = new UploadDirectoryOptions {
 				SearchPattern = "*",
-				Recursive = false,
+				Recursive = true,
 				BlobType = BlobType.BlockBlob,
 			};
 
@@ -116,10 +116,10 @@ namespace azpublishdir
 		public static string TransferStatusToString (TransferStatus status)
 		{
 			return string.Format ("Transferred bytes: {0}; Transfered: {1}; Skipped: {2}, Failed: {3}",
-				status.BytesTransferred,
-				status.NumberOfFilesTransferred,
-				status.NumberOfFilesSkipped,
-				status.NumberOfFilesFailed);
+				status?.BytesTransferred,
+				status?.NumberOfFilesTransferred,
+				status?.NumberOfFilesSkipped,
+				status?.NumberOfFilesFailed);
 		}
 	}
 }
